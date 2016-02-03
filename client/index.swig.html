@@ -13,8 +13,9 @@
     </head>
     <body>
 
-        <div>
-        </div>
+        {% include 'shared/header/header.swig.html' %}
+        {% block content %}{% endblock %}
+        {% include 'shared/footer/footer.swig.html' %}
 
     </body>
 </html>

@@ -14,6 +14,8 @@ require.config({
         
         /* app */
         'app': 'app',
+        'list-ctrl': '../../components/smses/list-ctrl',
+        'form-ctrl': '../../components/smses/form-ctrl',
         'helpers': '../../shared/helpers/helpers'
 
     },
@@ -52,6 +54,8 @@ require([
     'angular-translate',
     'angular-translate-loader-partial',
     'app',
+    'list-ctrl',
+    'form-ctrl',
     'helpers'
 ], function () {
 
