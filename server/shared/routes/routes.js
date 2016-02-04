@@ -1,6 +1,7 @@
 /**
  * Load node modules.
  */
+var _ = require('underscore');
 
 /**
  * Load custom modules.
@@ -37,10 +38,16 @@ var routes = function (app, scope) {
         appController.print();
     });
     
-    app.get('/twilio/list-messages', function (req, res) {
+    app.get('/twilio/messages', function (req, res) {
         twilioController = new twilioCtrl();
         twilioController.start(req, res, scope);
         twilioController.listMessages();
+    });
+    
+    app.get('/twilio/messages/:from/:to', function (req, res) {
+        twilioController = new twilioCtrl();
+        twilioController.start(req, res, scope);
+        twilioController.listMessages(req.params.from, req.params.to);
     });
 
 };

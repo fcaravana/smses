@@ -5,6 +5,8 @@ if (!global.Promise) {
     global.Promise = require('bluebird');
 }
 
+var _ = require('underscore');
+
 /**
  * Class for comunicate with twilio.
  *
@@ -55,11 +57,17 @@ var twilioCtrl = function () {
      * 
      * @returns {undefined}
      */
-    self.listMessages = function () {
+    self.listMessages = function (from, to) {
 
         _helpers.log("twilio-ctrl.js > self.listMessages", false);
 
-        _twilio.messages.list({}, function (err, data) {
+        var options = {};
+        
+        if (from && to) {
+            options = {from: from, to: to};
+        }
+        
+        _twilio.messages.list(options, function (err, data) {
 
             if (!err) {
                 console.log(data);
