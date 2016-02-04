@@ -53,7 +53,7 @@ var twilioCtrl = function () {
     };
 
     /**
-     * List mobile messages.
+     * List mobile messages between two numbers.
      * 
      * @returns {undefined}
      */
