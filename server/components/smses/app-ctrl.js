@@ -6,10 +6,10 @@ if (!global.Promise) {
 }
 
 /**
- * Class for send sms's.
+ * Class to control the app interface for sending mobile messages.
  *
- * @class facebook
- * @author Francisco Caravana (fcaravana@edigma.com)
+ * @class appCtrl
+ * @author Francisco Caravana (fcaravana@gmail.com)
  * @constructor
  */
 var appCtrl = function () {
@@ -46,18 +46,19 @@ var appCtrl = function () {
         _config = scope.config;
         _helpers = scope.helpers;
 
-        self.show();
     };
 
     /**
-     * Show HTML
+     * print html to browser.
      * 
      * @returns {undefined}
      */
-    self.show = function () {
-        _helpers.log("app-ctrl.js > self.show", false);
+    self.print = function () {
+
+        _helpers.log("app-ctrl.js > self.print", false);
 
         _res.render('components/smses/sms-list', {});
+
     };
 
     return self;

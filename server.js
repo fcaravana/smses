@@ -13,6 +13,11 @@ var config = ini.parse(fs.readFileSync(__dirname + '/server/shared/config/config
 config.root = (config.root !== 'default' ? config.root : __dirname + '/');
 
 /**
+ * Load twilio api.
+ */
+var twilio = require('twilio')(config.twilio.account_sid, config.twilio.auth_token);
+
+/**
  * Load custom modules.
  */
 helpersCtrl = new require(__dirname + '/server/shared/helpers/helpers-ctrl.js')(config);
@@ -23,6 +28,7 @@ helpersCtrl = new require(__dirname + '/server/shared/helpers/helpers-ctrl.js')(
 var scope = {};
 scope.config = config;
 scope.helpers = helpersCtrl;
+scope.twilio = twilio;
 
 /**
  * Load express framework.
