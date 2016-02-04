@@ -61,23 +61,38 @@ var twilioCtrl = function () {
 
         _helpers.log("twilio-ctrl.js > self.listMessages", false);
 
-        var options = {};
-        
-        if (from && to) {
-            options = {from: from, to: to};
-        }
-        
-        _twilio.messages.list(options, function (err, data) {
+        _listFilteredMessages({from: from, to: to}).then(function (messagesFromTo) {
+            _listFilteredMessages({from: to, to: from}).then(function (messagesToFrom) {
+                var messages = _.union(messagesFromTo, messagesToFrom);
 
-            if (!err) {
-                console.log(data);
-
-                data.messages.forEach(function (message) {
-                    console.log(message.friendlyName);
+                messages = _(messages).sortBy(function (message) {
+                    return message.date_updated;
                 });
 
-                _res.render('components/smses/messages', {json: JSON.stringify(data.messages)});
-            }
+                _res.render('components/smses/messages', {messages: JSON.stringify(messages)});
+            });
+        });
+
+    };
+
+    /**
+     * List mobile messages filtered by from and to.
+     * 
+     * @returns {promise} resolve returns json messages data, reject returns error data
+     */
+    var _listFilteredMessages = function (options) {
+
+        return new Promise(function (resolve, reject) {
+
+            _twilio.messages.list(options, function (err, data) {
+
+                if (!err) {
+                    resolve(data.messages);
+                } else {
+                    reject(err);
+                }
+            });
+
         });
 
     };
