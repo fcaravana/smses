@@ -57,19 +57,25 @@ var twilioCtrl = function () {
      * 
      * @returns {undefined}
      */
-    self.listMessages = function (from, to) {
+    self.listMessages = function (number1, number2) {
 
         _helpers.log("twilio-ctrl.js > self.listMessages", false);
 
-        _listFilteredMessages({from: from, to: to}).then(function (messagesFromTo) {
-            _listFilteredMessages({from: to, to: from}).then(function (messagesToFrom) {
+        _listFilteredMessages({from: number1, to: number2}).then(function (messagesFromTo) {
+            _listFilteredMessages({from: number2, to: number1}).then(function (messagesToFrom) {
                 var messages = _.union(messagesFromTo, messagesToFrom);
 
                 messages = _(messages).sortBy(function (message) {
                     return message.date_updated;
                 });
 
-                _res.render('components/smses/messages', {messages: JSON.stringify(messages)});
+                var json = JSON.stringify({
+                    status: "success",
+                    data: messages,
+                    message: ""
+                });
+
+                _res.render('components/mobilemessages/messages-json', {messages: json});
             });
         });
 

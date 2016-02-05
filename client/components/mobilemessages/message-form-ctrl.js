@@ -2,11 +2,11 @@ define(['app'], function (app) {
 
     'use strict';
 
-    app.controller('FormCtrl', [
+    app.controller('MessageFormCtrl', [
         '$scope',
         function (scope) {
             
-            console.log('Angular FormCtrl');
+            console.log('Angular MessageFormCtrl');
         }
     ]);
 

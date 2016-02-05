@@ -6,8 +6,8 @@ var _ = require('underscore');
 /**
  * Load custom modules.
  */
-var twilioCtrl = require(__dirname + '/../../components/smses/twilio-ctrl');
-var appCtrl = require(__dirname + '/../../components/smses/app-ctrl');
+var twilioCtrl = require(__dirname + '/../../components/mobilemessages/twilio-ctrl');
+var appCtrl = require(__dirname + '/../../components/mobilemessages/app-ctrl');
 
 /**
  * Express routes.
@@ -29,19 +29,19 @@ var routes = function (app, scope) {
      * Routes.
      */
     app.get('/', function (req, res) {
-        res.redirect('/app/smses');
+        res.redirect('/app/messages');
     });
 
-    app.get('/app/smses', function (req, res) {
+    app.get('/app/messages', function (req, res) {
         appController = new appCtrl();
         appController.start(req, res, scope);
         appController.print();
     });
     
-    app.get('/twilio/messages/:from/:to', function (req, res) {
+    app.get('/twilio/messages/:number1/:number2', function (req, res) {
         twilioController = new twilioCtrl();
         twilioController.start(req, res, scope);
-        twilioController.listMessages(req.params.from, req.params.to);
+        twilioController.listMessages(req.params.number1, req.params.number2);
     });
 
 };

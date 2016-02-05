@@ -14,8 +14,9 @@ require.config({
         
         /* app */
         'app': 'app',
-        'list-ctrl': '../../components/smses/list-ctrl',
-        'form-ctrl': '../../components/smses/form-ctrl',
+        'messages-list-ctrl': '../../components/mobilemessages/messages-list-ctrl',
+        'messages-list-service': '../../components/mobilemessages/messages-list-service',
+        'message-form-ctrl': '../../components/mobilemessages/message-form-ctrl',
         'helpers': '../../shared/helpers/helpers'
 
     },
@@ -54,11 +55,12 @@ require([
     'angular-translate',
     'angular-translate-loader-partial',
     'app',
-    'list-ctrl',
-    'form-ctrl',
+    'messages-list-ctrl',
+    'messages-list-service',
+    'message-form-ctrl',
     'helpers'
 ], function () {
 
-    angular.bootstrap(document, ['smsesApp']);
+    angular.bootstrap(document, ['mobileMessagesApp']);
 
 });

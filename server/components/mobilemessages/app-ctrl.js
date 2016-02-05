@@ -56,8 +56,13 @@ var appCtrl = function () {
     self.print = function () {
 
         _helpers.log("app-ctrl.js > self.print", false);
-
-        _res.render('components/smses/sms-list', {});
+        
+        var data =  {
+            number_1: _config.twilio.number, 
+            number_2: _config.twilio.mobile
+        };
+        
+        _res.render('components/mobilemessages/messages-list', data);
 
     };
 
