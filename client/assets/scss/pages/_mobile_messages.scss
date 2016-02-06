@@ -3,11 +3,9 @@
 #chatbox {
     overflow: hidden;
     position: relative;
-    width: 90%;
-    height: 250px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    margin: 5%;
+    width: 100%;
+    height: 60%;
+    min-height: 200px;
     line-height: 20px;
 }
 
@@ -24,14 +22,14 @@
 #chatmessages div {
     margin: 30px;
     padding: 30px;
-    border-radius: 5px;
-}
-.arrow-box-left, .arrow-box-right {
-    position: relative;
-    background: lightgray;
+    border-radius: 10px;
 }
 
-.arrow-box-left:after {
+.arrow-box {
+    position: relative;
+}
+
+.left-arrow:after {
     right: 100%;
     top: 50%;
     border: solid transparent;
@@ -41,12 +39,12 @@
     position: absolute;
     pointer-events: none;
     border-color: rgba(94, 127, 148, 0);
-    border-right-color: lightgray;
+    border-right-color: #ffffd8;
     border-width: 10px;
     margin-top: -10px;
 }
 
-.arrow-box-right:after {
+.right-arrow:after {
     left: 100%;
     top: 50%;
     border: solid transparent;
@@ -56,9 +54,19 @@
     position: absolute;
     pointer-events: none;
     border-color: rgba(94, 127, 148, 0);
-    border-left-color: lightgray;
+    border-left-color: #00b8df;
     border-width: 10px;
     margin-top: -10px;
+}
+
+.yellow-box {
+    color: #505050;
+    background: #ffffd8;
+}
+
+.blue-box {
+    color: #ffffff;
+    background: #00b8df;
 }
 
 @media (max-width: 768px) {

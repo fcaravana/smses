@@ -10,13 +10,12 @@ define(['app'], function (app) {
         function (scope, interval, messages, config) {
 
             var firstNumber = $('#chatbox').data('first-number');
-            var secondNumber = $('#chatbox').data('second-number');
             
             scope.computeCssClass = function (number) {
-                var className = 'arrow-box-left';
+                var className = 'arrow-box left-arrow yellow-box';
                 
                 if (number === firstNumber) {
-                    className = 'arrow-box-right';
+                    className = 'arrow-box right-arrow blue-box';
                 } 
                 
                 return className;

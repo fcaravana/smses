@@ -4,12 +4,56 @@
 /* common */
 /* application */
 html, body {
-  background-color: white;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  background-color: #eeeeee;
   line-height: 0; }
 
 /* mixins */
 /* mixins */
 /* modules */
+/* header */
+header {
+  width: 100%;
+  height: 10%;
+  min-height: 60px; }
+
+.header {
+  width: 100%;
+  height: 100%; }
+  .header div {
+    width: auto;
+    height: 100%;
+    background-color: #1283a4; }
+
+/* footer */
+footer {
+  width: 100%;
+  height: 30%;
+  min-height: 80px; }
+
+.footer {
+  width: 100%;
+  height: 100%;
+  line-height: 20px; }
+  .footer .numbers-box {
+    width: 100%;
+    height: 100%;
+    background-color: #1283a4; }
+    .footer .numbers-box .container-fluid {
+      padding: 0; }
+    .footer .numbers-box .col-md-6 {
+      padding: 0; }
+    .footer .numbers-box .number-1 {
+      width: 100%;
+      padding: 20px;
+      background-color: #ffffd8; }
+    .footer .numbers-box .number-2 {
+      width: 100%;
+      padding: 20px;
+      background-color: #00b8df; }
+
 /* forms */
 input:required:invalid,
 input:focus:invalid,
@@ -79,17 +123,14 @@ input:invalid, textarea:invalid {
   filter: alpha(opacity=0); }
 
 /* menu */
-/* footer */
 /* pages */
 /* mobile messages */
 #chatbox {
   overflow: hidden;
   position: relative;
-  width: 90%;
-  height: 250px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  margin: 5%;
+  width: 100%;
+  height: 60%;
+  min-height: 200px;
   line-height: 20px; }
 
 #chatmessages {
@@ -103,13 +144,12 @@ input:invalid, textarea:invalid {
 #chatmessages div {
   margin: 30px;
   padding: 30px;
-  border-radius: 5px; }
+  border-radius: 10px; }
 
-.arrow-box-left, .arrow-box-right {
-  position: relative;
-  background: lightgray; }
+.arrow-box {
+  position: relative; }
 
-.arrow-box-left:after {
+.left-arrow:after {
   right: 100%;
   top: 50%;
   border: solid transparent;
@@ -119,11 +159,11 @@ input:invalid, textarea:invalid {
   position: absolute;
   pointer-events: none;
   border-color: rgba(94, 127, 148, 0);
-  border-right-color: lightgray;
+  border-right-color: #ffffd8;
   border-width: 10px;
   margin-top: -10px; }
 
-.arrow-box-right:after {
+.right-arrow:after {
   left: 100%;
   top: 50%;
   border: solid transparent;
@@ -133,8 +173,16 @@ input:invalid, textarea:invalid {
   position: absolute;
   pointer-events: none;
   border-color: rgba(94, 127, 148, 0);
-  border-left-color: lightgray;
+  border-left-color: #00b8df;
   border-width: 10px;
   margin-top: -10px; }
+
+.yellow-box {
+  color: #505050;
+  background: #ffffd8; }
+
+.blue-box {
+  color: #ffffff;
+  background: #00b8df; }
 
 /*# sourceMappingURL=style.css.map */
