@@ -10,7 +10,7 @@ define(['app'], function (app) {
                 link: function (scope, elm, attrs) {
 
                     scope.isLoading = function () {
-                        return (http.pendingRequests.length > 0);
+                        return (http.pendingRequests.length > 0 && $('.hide-loader').length === 0);
                     };
 
                     scope.$watch(scope.isLoading, function (value) {
