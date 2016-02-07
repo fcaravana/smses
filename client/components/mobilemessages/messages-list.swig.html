@@ -1,0 +1,15 @@
+{% extends "../../index.swig.html" %}
+{% block content %}
+
+<div id="chatbox" data-ng-controller="MessagesListCtrl" 
+     data-first-number="{{ number_1}}" data-second-number="{{ number_2}}">
+
+    <div data-ng-view></div>
+
+</div>
+
+<div data-ng-controller="MessageFormCtrl">
+
+</div>
+
+{% endblock %}

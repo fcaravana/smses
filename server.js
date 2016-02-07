@@ -1,29 +1,70 @@
 /**
- * Required files and initializations
+ * Load node modules.
  */
-var express = require('express'),
-    fs = require("fs"),
-    ini = require('ini');
+var ini = require('ini'),
+        fs = require('fs'),
+        express = require('express'),
+        swig = require('swig');
 
+/**
+ * Load configurations.
+ */
 var config = ini.parse(fs.readFileSync(__dirname + '/server/shared/config/config.ini', 'utf-8'));
-
-app = express();
-
-/**
- * Static routes
- */
-app.use('/app', express.static('./client'));
+config.root = (config.root !== 'default' ? config.root : __dirname + '/');
 
 /**
- * Available routes
+ * Load twilio api.
  */
-app.get('/', function (req, res) {
-    res.redirect('/app');
-});
+var twilio = require('twilio')(config.twilio.account_sid, config.twilio.auth_token);
 
 /**
- * HTTP Server
+ * Load custom modules.
  */
-var server = app.listen(8080, 'localhost', function () {
-    console.log('Listening at http://localhost:8080/');
+helpersCtrl = new require(__dirname + '/server/shared/helpers/helpers-ctrl.js')(config);
+
+/**
+ * Set application scope.
+ */
+var scope = {};
+scope.config = config;
+scope.helpers = helpersCtrl;
+scope.twilio = twilio;
+
+/**
+ * Load express framework.
+ */
+var app = express();
+
+/**
+ * Set swig template.
+ */
+app.engine('swig.html', swig.renderFile);
+app.set('view engine', 'swig.html');
+app.set('views', config.root + '/client');
+app.set('view cache', false);
+swig.setDefaults({cache: false});
+
+/**
+ * Express middleware cross origin.
+ */
+require(__dirname + '/server/shared/cors/cors.js');
+
+/**
+ * Routes.
+ */
+require(__dirname + '/server/shared/routes/routes.js')(app, scope);
+
+/**
+ * Static routes.
+ */
+app.use('/app', express.static(config.root + 'client'));
+
+/**
+ * Server.
+ */
+var server = app.listen(config.http.port, config.http.server, function () {
+    var host = server.address().address;
+    var port = server.address().port;
+
+    console.log('Listening at http://%s:%s', host, port);
 });

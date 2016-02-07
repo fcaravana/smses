@@ -1,3 +1,6 @@
 {
-    "HOME": "Home"
+    "MAIN_TITLE": "Send SMS Messages",
+    "NO_MESSAGES": "No messages.",
+    "LABEL_MESSAGE": "Message",
+    "LABEL_SEND": "Send"
 }

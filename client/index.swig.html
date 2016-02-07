@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>SMSes Page</title>
+        <title>Mobile Messages Page</title>
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +13,9 @@
     </head>
     <body>
 
-        <div>
-        </div>
+        {% include 'shared/header/header.swig.html' %}
+        {% block content %}{% endblock %}
+        {% include 'shared/footer/footer.swig.html' %}
 
     </body>
 </html>

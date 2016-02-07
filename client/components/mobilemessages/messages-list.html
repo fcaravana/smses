@@ -1,0 +1,16 @@
+<div id="chat-messages" data-ng-show="messages.length" data-ng-cloak>
+    <div class='message hide-loader' data-ng-repeat="message in messages" data-ng-class="computeCssClass(message.to)">
+        <div class='field'>{{ message.body }}</div>
+        <div class='field date'>{{ message.date_sent }}</div>
+    </div>
+</div>
+
+<div class="no-messages" data-ng-show="!messages.length" data-ng-cloak>
+    <div class="not-found">{{ 'NO_MESSAGES' | translate }}</div>
+</div>
+
+<div class="loading" data-my-loading>
+    <div class="loading-image">
+        <img data-ng-src="assets/images/loader.png"/>
+    </div>
+</div>

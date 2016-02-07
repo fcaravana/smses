@@ -6,7 +6,15 @@ define(function () {
     'use strict';
 
     /* module */
-    var app = angular.module('smsesApp', ['ngRoute', 'pascalprecht.translate']);
+    var app = angular.module('mobileMessagesApp', ['ngRoute', 'pascalprecht.translate']);
+    
+    /* config */
+    app.constant('config', {
+        messagesService: 'http://localhost:8080/twilio/messages/{FIRST_NUMBER}/{SECOND_NUMBER}/',
+        sendMessageService: 'http://localhost:8080/twilio/sendmessage/{FIRST_NUMBER}/{SECOND_NUMBER}/{MESSAGE}/',
+        refreshTime: 10000,
+        messagesInterval: null
+    });
 
     /* translations */
     app.config([
@@ -22,6 +30,18 @@ define(function () {
             translatePartialLoaderProvider.addPart('main');
         }
     ]);
+
+    /* routes */
+    app.config(['$routeProvider', function (routeProvider) {
+        routeProvider.
+                when('/messages', {
+                    templateUrl: 'components/mobilemessages/messages-list.html',
+                    controller: 'MessagesListCtrl'
+                }).
+                otherwise({
+                    redirectTo: '/messages'
+                });
+    }]);
 
     return app;
 
