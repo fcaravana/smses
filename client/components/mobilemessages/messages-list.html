@@ -1,5 +1,5 @@
 <div id="chat-messages" data-ng-show="messages.length" data-ng-cloak>
-    <div class='hide-loader' data-ng-repeat="message in messages" data-ng-class="computeCssClass(message.to)">
+    <div class='message hide-loader' data-ng-repeat="message in messages" data-ng-class="computeCssClass(message.to)">
         <div class='field'>{{ message.body }}</div>
         <div class='field date'>{{ message.date_sent }}</div>
     </div>
