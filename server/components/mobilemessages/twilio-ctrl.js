@@ -53,8 +53,46 @@ var twilioCtrl = function () {
     };
 
     /**
+     * Send sms message.
+     * 
+     * @param {string} message sms message
+     * @returns {undefined}
+     */
+    self.sendMessage = function (from, to, message) {
+
+        _twilio.sendMessage({
+            to: (to ? to : _config.twilio.mobile),
+            from: (from ? from : _config.twilio.number),
+            body: message
+
+        }, function (err, responseData) {
+
+            var json = null;
+            
+            if (!err) {
+                json = JSON.stringify({
+                    status: "success",
+                    data: responseData,
+                    message: "Message sent."
+                });
+            } else {
+                json = JSON.stringify({
+                    status: "error",
+                    data: err,
+                    message: "Twilio api error."
+                });
+            }
+
+            _res.render('components/mobilemessages/messages-json', {messages: json});
+        });
+
+    };
+
+    /**
      * List mobile messages between two numbers.
      * 
+     * @param {string} number1 twilio phone number
+     * @param {string} number2 mobile phone number
      * @returns {undefined}
      */
     self.listMessages = function (number1, number2) {
@@ -65,8 +103,10 @@ var twilioCtrl = function () {
             _listFilteredMessages({from: number2, to: number1}).then(function (messagesToFrom) {
                 var messages = _.union(messagesFromTo, messagesToFrom);
 
-                messages = _(messages).sortBy(function (message) {
-                    return message.date_updated;
+                messages.sort(function (a, b) {
+                    var c = new Date(a.date_updated);
+                    var d = new Date(b.date_updated);
+                    return c - d;
                 });
 
                 var json = JSON.stringify({
@@ -84,6 +124,7 @@ var twilioCtrl = function () {
     /**
      * List mobile messages filtered by from and to.
      * 
+     * @param {object} options filters
      * @returns {promise} resolve returns json messages data, reject returns error data
      */
     var _listFilteredMessages = function (options) {
@@ -91,7 +132,6 @@ var twilioCtrl = function () {
         return new Promise(function (resolve, reject) {
 
             _twilio.messages.list(options, function (err, data) {
-
                 if (!err) {
                     resolve(data.messages);
                 } else {

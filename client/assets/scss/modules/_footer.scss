@@ -13,28 +13,83 @@ footer {
     line-height: 20px;
 
     .numbers-box {
+        
         width: 100%;
         height: 100%;
         background-color: #1283a4;
-        
-        .container-fluid {
+
+        .container-fluid, .row {
             padding: 0;
+            margin: 0;
         }
-        
-        .col-md-6 {
+
+        .col-md-8, .col-xs-8, .col-md-4, .col-xs-4 {
             padding: 0;
+            margin: 0;
         }
-        
+
         .number-1 {
+            display: inline-block;
             width: 100%;
+            min-height: 60px;
             padding: 20px;
-            background-color: #ffffd8;
+            background-color: #ffffff;
         }
-        
+
         .number-2 {
+            display: inline-block;
             width: 100%;
+            min-height: 60px;
             padding: 20px;
             background-color: #00b8df;
+        }
+
+        .icon-1-wrap {
+            float: left;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            vertical-align: middle;
+            border: 1 solid #505050;
+            border-radius: 20px;
+            background-color: #00b8df;
+        }
+
+        .icon-2-wrap {
+            float: left;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            vertical-align: middle;
+            border: 1 solid #505050;
+            border-radius: 20px;
+            background-color: #ffffff;
+        }
+
+        .number {
+            float: left;
+            margin: 10px 0 0 10px;
+        }
+
+        .glyphicon {
+            display: inline-block;
+        }
+
+        .glyphicon-earphone {
+            margin-top: 10px;
+            font-size: 20px;
+            color: #ffffff;
+        }
+
+        .glyphicon-phone {
+            margin-top: 10px;
+            font-size: 20px;
+            color: #00b8df;
+        }
+
+        .form-inline {
+            padding: 3px 20px;
+            overflow: auto;
         }
     }
 

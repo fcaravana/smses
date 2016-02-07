@@ -5,9 +5,10 @@ input:focus:invalid,
 textarea:required:invalid,
 textarea:focus:invalid {
     background-image: url('../images/invalid.png');
-    background-position: right top;
+    background-position: right center;
     background-repeat: no-repeat;
-    border: none;
+    border: 1px solid #dedede;
+    padding-right: 40px;
 }
 
 input:required:valid,
@@ -15,9 +16,10 @@ input:focus:valid,
 textarea:required:valid,
 textarea:focus:valid {
     background-image: url('../images/valid.png');
-    background-position: right top;
+    background-position: right center;
     background-repeat: no-repeat;
-    border: none;
+    border: 1px solid #dedede;
+    padding-right: 40px;
 }
 
 input[type="submit"], 
@@ -41,22 +43,18 @@ input:invalid, textarea:invalid {
 }
 
 ::-webkit-input-placeholder {
-    font-family: 'Museo Sans 500';
     color: #aaaaaa;
 }
 
 :-moz-placeholder { 
-    font-family: 'Museo Sans 500';
     color: #aaaaaa;
 }
 
 ::-moz-placeholder {  
-    font-family: 'Museo Sans 500';
     color: #aaaaaa;  
 }
 
-:-ms-input-placeholder {  
-    font-family: 'Museo Sans 500';
+:-ms-input-placeholder {
     color: #aaaaaa;  
 }
 

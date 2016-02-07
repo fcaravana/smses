@@ -4,17 +4,16 @@ define(['app'], function (app) {
 
     app.service('messages', [
         '$http',
-        '$location',
         'config',
-        function (http, location, config) {
+        function (http, config) {
 
             var firstNumber = encodeURIComponent($('#chatbox').data('first-number'));
             var secondNumber = encodeURIComponent($('#chatbox').data('second-number'));
 
             var url = (config.messagesService.replace('{FIRST_NUMBER}', firstNumber)).replace('{SECOND_NUMBER}', secondNumber);
-            
+
             var errorWithoutAccess = function (response) {
-                location.path("/error/" + "Without api access!");
+                console.log("Without api access!");
             };
 
             var getData = function (callback) {
@@ -23,7 +22,6 @@ define(['app'], function (app) {
                     url: url,
                     cache: false
                 }).success(function (messages) {
-                    console.log(messages);
                     callback(messages.data);
                 }).error(errorWithoutAccess);
             };

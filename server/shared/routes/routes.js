@@ -38,6 +38,12 @@ var routes = function (app, scope) {
         appController.print();
     });
     
+    app.get('/twilio/sendmessage/:number1/:number2/:message', function (req, res) {
+        twilioController = new twilioCtrl();
+        twilioController.start(req, res, scope);
+        twilioController.sendMessage(req.params.number1, req.params.number2, req.params.message);
+    });
+    
     app.get('/twilio/messages/:number1/:number2', function (req, res) {
         twilioController = new twilioCtrl();
         twilioController.start(req, res, scope);

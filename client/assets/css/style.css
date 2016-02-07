@@ -2,6 +2,19 @@
 /* settings */
 /* common */
 /* common */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important; }
+
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg); } }
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
 /* application */
 html, body {
   height: 100%;
@@ -41,18 +54,58 @@ footer {
     width: 100%;
     height: 100%;
     background-color: #1283a4; }
-    .footer .numbers-box .container-fluid {
-      padding: 0; }
-    .footer .numbers-box .col-md-6 {
-      padding: 0; }
+    .footer .numbers-box .container-fluid, .footer .numbers-box .row {
+      padding: 0;
+      margin: 0; }
+    .footer .numbers-box .col-md-8, .footer .numbers-box .col-xs-8, .footer .numbers-box .col-md-4, .footer .numbers-box .col-xs-4 {
+      padding: 0;
+      margin: 0; }
     .footer .numbers-box .number-1 {
+      display: inline-block;
       width: 100%;
+      min-height: 60px;
       padding: 20px;
-      background-color: #ffffd8; }
+      background-color: #ffffff; }
     .footer .numbers-box .number-2 {
+      display: inline-block;
       width: 100%;
+      min-height: 60px;
       padding: 20px;
       background-color: #00b8df; }
+    .footer .numbers-box .icon-1-wrap {
+      float: left;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      vertical-align: middle;
+      border: 1 solid #505050;
+      border-radius: 20px;
+      background-color: #00b8df; }
+    .footer .numbers-box .icon-2-wrap {
+      float: left;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      vertical-align: middle;
+      border: 1 solid #505050;
+      border-radius: 20px;
+      background-color: #ffffff; }
+    .footer .numbers-box .number {
+      float: left;
+      margin: 10px 0 0 10px; }
+    .footer .numbers-box .glyphicon {
+      display: inline-block; }
+    .footer .numbers-box .glyphicon-earphone {
+      margin-top: 10px;
+      font-size: 20px;
+      color: #ffffff; }
+    .footer .numbers-box .glyphicon-phone {
+      margin-top: 10px;
+      font-size: 20px;
+      color: #00b8df; }
+    .footer .numbers-box .form-inline {
+      padding: 3px 20px;
+      overflow: auto; }
 
 /* forms */
 input:required:invalid,
@@ -60,18 +113,20 @@ input:focus:invalid,
 textarea:required:invalid,
 textarea:focus:invalid {
   background-image: url("../images/invalid.png");
-  background-position: right top;
+  background-position: right center;
   background-repeat: no-repeat;
-  border: none; }
+  border: 1px solid #dedede;
+  padding-right: 40px; }
 
 input:required:valid,
 input:focus:valid,
 textarea:required:valid,
 textarea:focus:valid {
   background-image: url("../images/valid.png");
-  background-position: right top;
+  background-position: right center;
   background-repeat: no-repeat;
-  border: none; }
+  border: 1px solid #dedede;
+  padding-right: 40px; }
 
 input[type="submit"],
 input[type="submit"]:focus {
@@ -91,19 +146,15 @@ input:invalid, textarea:invalid {
   box-shadow: none; }
 
 ::-webkit-input-placeholder {
-  font-family: 'Museo Sans 500';
   color: #aaaaaa; }
 
 :-moz-placeholder {
-  font-family: 'Museo Sans 500';
   color: #aaaaaa; }
 
 ::-moz-placeholder {
-  font-family: 'Museo Sans 500';
   color: #aaaaaa; }
 
 :-ms-input-placeholder {
-  font-family: 'Museo Sans 500';
   color: #aaaaaa; }
 
 .file-upload {
@@ -132,57 +183,88 @@ input:invalid, textarea:invalid {
   height: 60%;
   min-height: 200px;
   line-height: 20px; }
-
-#chatmessages {
-  display: none;
-  overflow: auto;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  max-height: 100%; }
-
-#chatmessages div {
-  margin: 30px;
-  padding: 30px;
-  border-radius: 10px; }
-
-.arrow-box {
-  position: relative; }
-
-.left-arrow:after {
-  right: 100%;
-  top: 50%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-  border-color: rgba(94, 127, 148, 0);
-  border-right-color: #ffffd8;
-  border-width: 10px;
-  margin-top: -10px; }
-
-.right-arrow:after {
-  left: 100%;
-  top: 50%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-  border-color: rgba(94, 127, 148, 0);
-  border-left-color: #00b8df;
-  border-width: 10px;
-  margin-top: -10px; }
-
-.yellow-box {
-  color: #505050;
-  background: #ffffd8; }
-
-.blue-box {
-  color: #ffffff;
-  background: #00b8df; }
+  #chatbox .loading {
+    position: absolute;
+    display: table;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 5px;
+    text-align: center; }
+  #chatbox .loading-image {
+    width: 60px;
+    height: 60px;
+    display: table-cell;
+    vertical-align: middle;
+    -webkit-animation: spin 1s infinite linear;
+    -moz-animation: spin 1s infinite linear;
+    -o-animation: spin 1s infinite linear;
+    animation: spin 1s infinite linear;
+    background-position: center;
+    background-size: cover; }
+  #chatbox #chat-messages {
+    display: block;
+    overflow: auto;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    max-height: 100%; }
+  #chatbox .no-messages {
+    display: block;
+    overflow: auto;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    max-height: 100%; }
+    #chatbox .no-messages .not-found {
+      text-align: center;
+      padding: 20px 20px 60px 20px;
+      width: 100%; }
+  #chatbox #chat-messages > div {
+    margin: 30px;
+    padding: 30px;
+    border-radius: 10px; }
+  #chatbox .field {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0; }
+  #chatbox .date {
+    color: #dedede; }
+  #chatbox .arrow-box {
+    position: relative; }
+  #chatbox .left-arrow:after {
+    right: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(94, 127, 148, 0);
+    border-right-color: #ffffff;
+    border-width: 10px;
+    margin-top: -10px; }
+  #chatbox .right-arrow:after {
+    left: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(94, 127, 148, 0);
+    border-left-color: #00b8df;
+    border-width: 10px;
+    margin-top: -10px; }
+  #chatbox .white-box {
+    color: #505050;
+    background: #ffffff; }
+  #chatbox .blue-box {
+    color: #ffffff;
+    background: #00b8df; }
 
 /*# sourceMappingURL=style.css.map */

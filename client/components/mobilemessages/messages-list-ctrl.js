@@ -5,27 +5,30 @@ define(['app'], function (app) {
     app.controller('MessagesListCtrl', [
         '$scope',
         '$interval',
+        '$timeout',
         'messages',
         'config',
-        function (scope, interval, messages, config) {
+        function (scope, interval, timeout, messages, config) {
 
             var firstNumber = $('#chatbox').data('first-number');
-            
+
             scope.computeCssClass = function (number) {
-                var className = 'arrow-box left-arrow yellow-box';
-                
+                var className = 'arrow-box left-arrow white-box';
+
                 if (number === firstNumber) {
                     className = 'arrow-box right-arrow blue-box';
-                } 
-                
+                }
+
                 return className;
+            };
+
+            var scrollToBottom = function () {
+                $('#chat-messages').scrollTop($('#chat-messages')[0].scrollHeight);
             };
 
             scope.setData = function (messages) {
                 scope.messages = messages;
-                $('#chatmessages').show(function () {
-                    $(this).scrollTop($('#chatmessages')[0].scrollHeight);
-                });
+                timeout(scrollToBottom, 1000);
             };
 
             scope.getData = function () {

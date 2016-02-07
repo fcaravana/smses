@@ -14,6 +14,7 @@ require.config({
         
         /* app */
         'app': 'app',
+        'loading-directive': '../../shared/loader/loading-directive',
         'messages-list-ctrl': '../../components/mobilemessages/messages-list-ctrl',
         'messages-list-service': '../../components/mobilemessages/messages-list-service',
         'message-form-ctrl': '../../components/mobilemessages/message-form-ctrl',
@@ -55,6 +56,7 @@ require([
     'angular-translate',
     'angular-translate-loader-partial',
     'app',
+    'loading-directive',
     'messages-list-ctrl',
     'messages-list-service',
     'message-form-ctrl',

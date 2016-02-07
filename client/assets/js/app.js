@@ -11,25 +11,10 @@ define(function () {
     /* config */
     app.constant('config', {
         messagesService: 'http://localhost:8080/twilio/messages/{FIRST_NUMBER}/{SECOND_NUMBER}/',
-        refreshTime: 20000,
+        sendMessageService: 'http://localhost:8080/twilio/sendmessage/{FIRST_NUMBER}/{SECOND_NUMBER}/{MESSAGE}/',
+        refreshTime: 10000,
         messagesInterval: null
     });
-
-    /* routes */
-    app.config(['$routeProvider', function (routeProvider) {
-        routeProvider.
-                when('/messages', {
-                    templateUrl: 'assets/js/app/components/events-list/events-list.html',
-                    controller: 'MessagesListCtrl'
-                }).
-                when('/error/:message', {
-                    templateUrl: 'assets/js/app/shared/error/error.html',
-                    controller: 'ErrorCtrl'
-                }).
-                otherwise({
-                    redirectTo: '/messages'
-                });
-    }]);
 
     /* translations */
     app.config([
@@ -45,6 +30,18 @@ define(function () {
             translatePartialLoaderProvider.addPart('main');
         }
     ]);
+
+    /* routes */
+    app.config(['$routeProvider', function (routeProvider) {
+        routeProvider.
+                when('/messages', {
+                    templateUrl: 'components/mobilemessages/messages-list.html',
+                    controller: 'MessagesListCtrl'
+                }).
+                otherwise({
+                    redirectTo: '/messages'
+                });
+    }]);
 
     return app;
 
