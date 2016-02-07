@@ -22,7 +22,7 @@ define(['app'], function (app) {
             /* error sending the message */
             var errorWithoutAccess = function (res) {
                 $('#formMessage').show();
-                console.log("Without api access!");
+                alert("Could not send the message!");
             };
 
             /* message form submit */

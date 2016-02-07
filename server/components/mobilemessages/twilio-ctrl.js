@@ -68,19 +68,23 @@ var twilioCtrl = function () {
         }, function (err, responseData) {
 
             var json = null;
-            
+
             if (!err) {
                 json = JSON.stringify({
                     status: "success",
                     data: responseData,
                     message: "Message sent."
                 });
+                
+                _helpers.log('Message sent: ' + message, true, 'info');
             } else {
                 json = JSON.stringify({
                     status: "error",
                     data: err,
                     message: "Twilio api error."
                 });
+                
+                _helpers.log(err, true, 'error');
             }
 
             _res.render('components/mobilemessages/messages-json', {messages: json});
@@ -100,6 +104,7 @@ var twilioCtrl = function () {
         _helpers.log("twilio-ctrl.js > self.listMessages", false);
 
         _listFilteredMessages({from: number1, to: number2}).then(function (messagesFromTo) {
+
             _listFilteredMessages({from: number2, to: number1}).then(function (messagesToFrom) {
                 var messages = _.union(messagesFromTo, messagesToFrom);
 
@@ -109,6 +114,10 @@ var twilioCtrl = function () {
                     return c - d;
                 });
 
+                messages = _.reject(messages, function (message) {
+                    return message.body.indexOf('Reply HELP for help.Reply STOP to unsubscribe.') >= 0;
+                });
+
                 var json = JSON.stringify({
                     status: "success",
                     data: messages,
@@ -116,7 +125,12 @@ var twilioCtrl = function () {
                 });
 
                 _res.render('components/mobilemessages/messages-json', {messages: json});
+            }).catch(function (err) {
+                _helpers.log(err, true, 'error');
             });
+
+        }).catch(function (err) {
+            _helpers.log(err, true, 'error');
         });
 
     };
