@@ -36,11 +36,13 @@ $ node server.js
 
 * Edit server/shared/config/config.ini and add:
 
+```
 [twilio]
 account_sid = xyzba507a1b3fcd45a3de98dd5408d3xyz
 auth_token = xyz28ced29a4e0a65eb08c32d2c24xyz
 number = +1x103x59x0x
 mobile = +3x191x253x4x
+```
 
 ### Open browser and type
 
