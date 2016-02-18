@@ -29,7 +29,7 @@ var appCtrl = function () {
     var _helpers = null;
 
     /**
-     * Start, sets response and request and app scope.
+     * Start sets response, request and app scope.
      * 
      * @param {object} req request
      * @param {object} res response
