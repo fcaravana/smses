@@ -1,5 +1,7 @@
 # SMSes
 
+Exchange sms messages between twilio API and a mobile phone.
+
 ## Clone project
 
 ```sh
