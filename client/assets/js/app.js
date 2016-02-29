@@ -10,8 +10,8 @@ define(function () {
     
     /* config */
     app.constant('config', {
-        messagesService: 'http://localhost:8080/twilio/messages/{FIRST_NUMBER}/{SECOND_NUMBER}/',
-        sendMessageService: 'http://localhost:8080/twilio/sendmessage/{FIRST_NUMBER}/{SECOND_NUMBER}/{MESSAGE}/',
+        messagesService: 'http://localhost:8080/twilio/messages',
+        sendMessageService: 'http://localhost:8080/twilio/sendmessage',
         refreshTime: 10000,
         messagesInterval: null
     });

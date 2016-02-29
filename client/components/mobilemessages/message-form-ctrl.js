@@ -10,11 +10,11 @@ define(['app'], function (app) {
         function (rootScope, scope, http, config) {
 
             /* phone numbers */
-            var firstNumber = encodeURIComponent($('#chatbox').data('first-number'));
-            var secondNumber = encodeURIComponent($('#chatbox').data('second-number'));
+            var firstNumber = $('#chatbox').data('first-number');
+            var secondNumber = $('#chatbox').data('second-number');
 
             /* send message route */
-            var url = (config.sendMessageService.replace('{FIRST_NUMBER}', firstNumber)).replace('{SECOND_NUMBER}', secondNumber);
+            var url = config.sendMessageService;
 
             /* message */
             scope.message = null;
@@ -30,11 +30,10 @@ define(['app'], function (app) {
 
                 $('#formMessage').hide();
 
-                url = url.replace('{MESSAGE}', encodeURIComponent(scope.message));
-
                 http({
-                    method: 'GET',
+                    method: 'POST',
                     url: url,
+                    params: {number1: firstNumber, number2: secondNumber, message: scope.message},
                     cache: false
                 }).success(function (res) {
 
