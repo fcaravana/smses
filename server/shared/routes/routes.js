@@ -38,16 +38,16 @@ var routes = function (app, scope) {
         appController.print();
     });
     
-    app.get('/twilio/sendmessage/:number1/:number2/:message', function (req, res) {
+    app.post('/twilio/sendmessage', function (req, res) {
         twilioController = new twilioCtrl();
         twilioController.start(req, res, scope);
-        twilioController.sendMessage(req.params.number1, req.params.number2, req.params.message);
+        twilioController.sendMessage(req.query.number1, req.query.number2, req.query.message);
     });
     
-    app.get('/twilio/messages/:number1/:number2', function (req, res) {
+    app.get('/twilio/messages', function (req, res) {
         twilioController = new twilioCtrl();
         twilioController.start(req, res, scope);
-        twilioController.listMessages(req.params.number1, req.params.number2);
+        twilioController.listMessages(req.query.number1, req.query.number2);
     });
 
 };

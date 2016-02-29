@@ -7,10 +7,10 @@ define(['app'], function (app) {
         'config',
         function (http, config) {
 
-            var firstNumber = encodeURIComponent($('#chatbox').data('first-number'));
-            var secondNumber = encodeURIComponent($('#chatbox').data('second-number'));
+            var firstNumber = $('#chatbox').data('first-number');
+            var secondNumber = $('#chatbox').data('second-number');
 
-            var url = (config.messagesService.replace('{FIRST_NUMBER}', firstNumber)).replace('{SECOND_NUMBER}', secondNumber);
+            var url = config.messagesService;
 
             var errorWithoutAccess = function (response) {
                 console.log("Without api access!");
@@ -20,6 +20,7 @@ define(['app'], function (app) {
                 http({
                     method: 'GET',
                     url: url,
+                    params: {number1: firstNumber, number2: secondNumber},
                     cache: false
                 }).success(function (messages) {
                     callback(messages.data);

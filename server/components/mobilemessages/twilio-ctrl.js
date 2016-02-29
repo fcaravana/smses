@@ -4,13 +4,12 @@
 if (!global.Promise) {
     global.Promise = require('bluebird');
 }
-
 var _ = require('underscore');
 
 /**
- * Class for comunicate with twilio.
+ * Class comunicate with twilio module.
  *
- * @class twilioCtrl
+ * @class twilioCtrl module
  * @author Francisco Caravana (fcaravana@gmail.com)
  * @constructor
  */
@@ -55,6 +54,8 @@ var twilioCtrl = function () {
     /**
      * Send sms message.
      * 
+     * @param {string} from from mail
+     * @param {string} to to mail
      * @param {string} message sms message
      * @returns {undefined}
      */

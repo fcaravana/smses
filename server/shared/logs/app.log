@@ -1,9 +1,0 @@
-{"level":"error","message":"{\"status\":\"ETIMEDOUT\",\"message\":\"Unable to reach host: \\\"api.twilio.com\\\"\"}","timestamp":"2016-02-07T23:28:31.164Z"}
-{"level":"info","message":"Message sent: One more test...","timestamp":"2016-02-07T23:31:48.767Z"}
-{"level":"error","message":"{\"status\":\"ETIMEDOUT\",\"message\":\"Unable to reach host: \\\"api.twilio.com\\\"\"}","timestamp":"2016-02-08T01:01:40.160Z"}
-{"level":"error","message":"{\"status\":\"ETIMEDOUT\",\"message\":\"Unable to reach host: \\\"api.twilio.com\\\"\"}","timestamp":"2016-02-08T01:04:30.162Z"}
-{"level":"error","message":"{\"status\":\"ETIMEDOUT\",\"message\":\"Unable to reach host: \\\"api.twilio.com\\\"\"}","timestamp":"2016-02-08T01:05:52.224Z"}
-{"level":"error","message":"{\"status\":\"ETIMEDOUT\",\"message\":\"Unable to reach host: \\\"api.twilio.com\\\"\"}","timestamp":"2016-02-08T22:58:25.670Z"}
-{"level":"error","message":"{\"status\":\"ETIMEDOUT\",\"message\":\"Unable to reach host: \\\"api.twilio.com\\\"\"}","timestamp":"2016-02-08T23:00:27.140Z"}
-{"level":"error","message":"{\"status\":\"ETIMEDOUT\",\"message\":\"Unable to reach host: \\\"api.twilio.com\\\"\"}","timestamp":"2016-02-08T23:23:19.429Z"}
-{"level":"error","message":"{\"status\":\"ETIMEDOUT\",\"message\":\"Unable to reach host: \\\"api.twilio.com\\\"\"}","timestamp":"2016-02-08T23:27:17.174Z"}

@@ -4,7 +4,12 @@
 var winston = require('winston');
 
 /**
- * Helpers module.
+ * Class helpers module.
+ *
+ * @class helpersCtrl module
+ * @author Francisco Caravana (fcaravana@gmail.com)
+ * @param {object} config configurations
+ * @constructor
  */
 var helpersCtrl = function (config) {
 
@@ -13,6 +18,9 @@ var helpersCtrl = function (config) {
      */
     var self = {};
 
+    /**
+     * Winston logger.
+     */
     self.logger = new (winston.Logger)({
         transports: [
             new (winston.transports.Console)({level: 'error'}),
@@ -25,7 +33,7 @@ var helpersCtrl = function (config) {
             })
         ]
     });
-    
+
     /**
      * Private properties and methods, start with _{name}.
      */
@@ -44,7 +52,7 @@ var helpersCtrl = function (config) {
         if (_config.debug === true) {
             console.log(data);
         }
-        
+
         if (save === true) {
             var message = (typeof data === 'object' ? JSON.stringify(data) : data);
             self.logger.log(type, message);
